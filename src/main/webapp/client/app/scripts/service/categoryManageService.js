@@ -4,7 +4,7 @@ angular.module('letusgoApp').service('CategoryService', function (localStorageSe
         return {
             id: id,
             name: name,
-            num : num
+            num: num
         }
     };
 
@@ -14,11 +14,11 @@ angular.module('letusgoApp').service('CategoryService', function (localStorageSe
         return nameExist;
     };
 
-    this.saveNewCategory = function (currentName, callback) {
+    this.saveNewCategory = function (categoryName, callback) {
         var currentThis = this;
         $http.get('http://localhost:8080/api/categories').success(function(categories){
-            var nameHadExist = currentThis.nameHadExist(categories, currentName);
-            if (!currentName) {
+            var nameHadExist = currentThis.nameHadExist(categories, categoryName);
+            if (!categoryName) {
                 callback([true, false]);
                 return false;
             }
@@ -26,8 +26,7 @@ angular.module('letusgoApp').service('CategoryService', function (localStorageSe
                 callback([false, true]);
                 return false;
             }else{
-                var newCategory = currentThis.generateCategory(null, currentName, 0);
-                $http.post('http://localhost:8080/api/categories', {'category': newCategory});
+                $http.post('http://localhost:8080/api/categories', {id: null, name: categoryName, num:0});
                 callback([false, false]);
                 return true;
             }
@@ -36,7 +35,7 @@ angular.module('letusgoApp').service('CategoryService', function (localStorageSe
 
     this.updateCategory = function (callback) {
         var updateObeject = localStorageService.get('updateCategory');
-        $http.put('http://localhost:8080/api/categories/' + updateObeject.id, {'category': updateObeject}).success(function(){});
+        $http.put('http://localhost:8080/api/categories/' + updateObeject.id, {id: updateObeject.id, name: updateObeject.name, num: updateObeject.num}).success(function(){});
         callback();
     };
 
