@@ -98,6 +98,7 @@ angular.module('letusgoApp').service('BoughtGoodsService', function (localStorag
             callback(result);
         });
     };
+
     this.addClickcount = function (direction, number,callback) {
 
         var currentThis = this;
@@ -107,6 +108,7 @@ angular.module('letusgoApp').service('BoughtGoodsService', function (localStorag
         });
 
     };
+
     this.decreaseOrDelete = function(boughtGoods, i){
         if (boughtGoods[i].num === 1) {
             $http.delete('http://localhost:8080/api/cartItems/' + boughtGoods[i].id).success();
