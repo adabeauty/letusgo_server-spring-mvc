@@ -61,4 +61,19 @@ public class ItemDaoImpl implements ItemDao{
             }
         });
     }
+
+    @Override
+    public List<Item> getItemsByCategoryId(int id) {
+        String sql = "SELECT items.*, categories.* FROM items, categories WHERE item_categoryId = ? AND category_id = ?";
+
+        return jdbcTemplate.query(sql, new RowMapper<Item>() {
+            @Override
+            public Item mapRow(ResultSet rs, int i) throws SQLException {
+                Category category = new Category(rs.getInt("category_id"), rs.getString("category_name"));
+                return new Item(rs.getInt("item_id"), rs.getString("item_name"), rs.getDouble("item_price"),
+                        rs.getString("item_unit"),category);
+            }
+        }, id, id);
+    }
+
 }

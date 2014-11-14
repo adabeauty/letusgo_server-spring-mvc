@@ -14,4 +14,6 @@ public interface ItemDao {
     void insertItem(Item item);
 
     void updateItemById(Item item);
+
+    List<Item> getItemsByCategoryId(int id);
 }
