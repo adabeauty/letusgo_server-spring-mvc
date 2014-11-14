@@ -29,7 +29,7 @@ angular.module('letusgoApp').service('GoodService', function (localStorageServic
         $http.get('http://localhost:8080/api/categories').success(function(categories){
             var index = _.findIndex(categories, {name: itemCategory});
             categories[index].num = JSON.parse(categories[index].num) + num;
-            $http.put('http://localhost:8080/api/categories/' + categories[index].id, {'category': categories[index]}).success(function(){});
+            $http.put('http://localhost:8080/api/categories/' + categories[index].id, {'category': categories[index]}).success();
         });
     };
 
