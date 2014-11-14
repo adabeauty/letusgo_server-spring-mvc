@@ -142,7 +142,7 @@ angular.module('letusgoApp').service('BoughtGoodsService', function (localStorag
     };
 
     this.deleteItem = function (cartItem) {
-        $http.delete('http://localhost:8080/api/cartItems/' + cartItem.item.id).success(function(){});
+        $http.delete('http://localhost:8080/api/cartItems/' + cartItem.id).success(function(){});
     };
 
     this.clearDate = function () {
