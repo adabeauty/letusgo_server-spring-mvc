@@ -1,6 +1,7 @@
 package com.thoughtworks.server.service;
 
 import com.thoughtworks.server.dao.CategoryDao;
+import com.thoughtworks.server.dao.ItemDao;
 import com.thoughtworks.server.model.Category;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface CategoryService {
     List<Category> getCategories();
 
     void setCategoryDaoImpl(CategoryDao categoryDaoImpl);
+
+    public void setItemDaoImpl(ItemDao itemDaoImpl);
 }

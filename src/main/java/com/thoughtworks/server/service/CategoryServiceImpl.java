@@ -23,6 +23,10 @@ public class CategoryServiceImpl implements CategoryService{
         this.categoryDaoImpl = categoryDaoImpl;
     }
 
+    public void setItemDaoImpl(ItemDao itemDaoImpl) {
+        this.itemDaoImpl = itemDaoImpl;
+    }
+
     @Override
     public Category getCategoryById(int id) {
         List<Item> item= itemDaoImpl.getItemsByCategoryId(id);
