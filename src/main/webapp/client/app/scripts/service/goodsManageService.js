@@ -20,17 +20,24 @@ angular.module('letusgoApp').service('GoodService', function (localStorageServic
     };
 
     this.saveItem = function (itemCategory, itemName, itemPrice, itemUnit) {
+        var currentThis = this;
+        $http.get('http://localhost:8080/api/categories').success(function(categories){
+            var index = _.findIndex(categories, {name: itemCategory});
 
-        var newItem = this.item(itemCategory, itemName, JSON.parse(itemPrice).toFixed(2), itemUnit);
-        $http.post('http://localhost:8080/api/items', {'item': newItem});
+            var newItem = currentThis.item(categories[index], itemName, itemPrice, itemUnit);
+            $http.post('http://localhost:8080/api/items', {id: newItem.id, name: newItem.name, price: newItem.price,
+                unit: newItem.unit, category: newItem.category});
+        });
+
     };
 
     this.modifyCategoryNum = function (num, itemCategory) {
 
         $http.get('http://localhost:8080/api/categories').success(function(categories){
             var index = _.findIndex(categories, {name: itemCategory.name});
-            categories[index].num = JSON.parse(categories[index].num) + num;
-            $http.put('http://localhost:8080/api/categories/' + categories[index].id, {'category': categories[index]}).success();
+            categories[index].num = categories[index].num + num;
+            $http.put('http://localhost:8080/api/categories/' + categories[index].id, {id: categories[index].id,
+                name: categories[index].name, num: categories[index].num}).success();
         });
     };
 
@@ -74,12 +81,11 @@ angular.module('letusgoApp').service('GoodService', function (localStorageServic
     };
 
     this.updateItem = function (updateObject) {
-        $http.put('http://localhost:8080/api/items/' + updateObject.id, {'item': updateObject});
+        $http.put('http://localhost:8080/api/items/' + updateObject.id, {id: updateObject.id, name: updateObject.name,
+        price: updateObject.price, unit: updateObject.unit, category: updateObject.category});
     };
 
     this.deleteButton = function (item) {
-        console.log(item);
-//        $http.delete('http://localhost:8080/api/items/' + item.id).success();
         $http.delete('http://localhost:8080/api/items/' + item.id).success(function(){});
         this.modifyCategoryNum(-1, item.category);
     };
