@@ -17,4 +17,6 @@ public interface CartItemService {
     void deleteCartItemById(int id);
 
     void updateCartItemById(CartItem cartItem);
+
+    void deleteAllCartItems();
 }

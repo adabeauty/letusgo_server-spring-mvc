@@ -42,4 +42,9 @@ public class CartItemServiceImpl implements CartItemService {
     public void updateCartItemById(CartItem cartItem) {
         cartItemDaoImpl.updateCartItemById(cartItem);
     }
+
+    @Override
+    public void deleteAllCartItems() {
+        cartItemDaoImpl.deleteCartItems();
+    }
 }
