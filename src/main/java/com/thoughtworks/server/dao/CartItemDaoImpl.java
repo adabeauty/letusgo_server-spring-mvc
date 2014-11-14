@@ -66,4 +66,9 @@ public class CartItemDaoImpl implements CartItemDao{
         String sql = "UPDATE cartItems SET cartItem_itemId = ?, cartItem_num = ? WHERE cartItem_id = ?";
         jdbcTemplate.update(sql, cartItem.getItem().getId(), cartItem.getNum(), cartItem.getId());
     }
+
+    @Override
+    public void deleteCartItems() {
+
+    }
 }
