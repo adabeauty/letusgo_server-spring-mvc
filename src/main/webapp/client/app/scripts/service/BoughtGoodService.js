@@ -30,10 +30,10 @@ angular.module('letusgoApp').service('BoughtGoodsService', function (localStorag
 
             if(boughtGood){
                 boughtGood.num++;
-                console.log(boughtGood);
-                $http.put('http://localhost:8080/api/cartItems/' + item.id, {id: boughtGood.id,item: boughtGood.item, num: boughtGood.num}).success();
+                $http.put('http://localhost:8080/api/cartItems/' + item.id, {id: boughtGood.id,
+                    item: boughtGood.item, num: boughtGood.num});
             }else{
-                $http.post('http://localhost:8080/api/cartItems', {id: null, item:item, num:1}).success();
+                $http.post('http://localhost:8080/api/cartItems', {id: null, item:item, num:1});
             }
             callback(data);
         });
@@ -111,12 +111,12 @@ angular.module('letusgoApp').service('BoughtGoodsService', function (localStorag
 
     this.decreaseOrDelete = function(boughtGoods, i){
         if (boughtGoods[i].num === 1) {
-            $http.delete('http://localhost:8080/api/cartItems/' + boughtGoods[i].id).success();
+            $http.delete('http://localhost:8080/api/cartItems/' + boughtGoods[i].id);
         } else {
             boughtGoods[i].num--;
-            $http.put('http://localhost:8080/api/cartItems/' + boughtGoods[i].id, {id: boughtGoods[i].id,item: boughtGoods[i].item, num: boughtGoods[i].num}).success();
+            $http.put('http://localhost:8080/api/cartItems/' + boughtGoods[i].id, {id: boughtGoods[i].id,
+                item: boughtGoods[i].item, num: boughtGoods[i].num});
         }
-        console.log(boughtGoods);
         return boughtGoods;
     };
 
@@ -124,7 +124,8 @@ angular.module('letusgoApp').service('BoughtGoodsService', function (localStorag
 
         if (direction === 1) {
             boughtGoods[i].num++;
-            $http.put('http://localhost:8080/api/cartItems/' + boughtGoods[i].item.id, {id: boughtGoods[i].id,item: boughtGoods[i].item, num: boughtGoods[i].num});
+            $http.put('http://localhost:8080/api/cartItems/' + boughtGoods[i].item.id, {id: boughtGoods[i].id,
+                item: boughtGoods[i].item, num: boughtGoods[i].num});
         } else {
             this.decreaseOrDelete(boughtGoods, i);
         }
@@ -144,7 +145,7 @@ angular.module('letusgoApp').service('BoughtGoodsService', function (localStorag
     };
 
     this.deleteItem = function (cartItem) {
-        $http.delete('http://localhost:8080/api/cartItems/' + cartItem.id).success(function(){});
+        $http.delete('http://localhost:8080/api/cartItems/' + cartItem.id);
     };
 
     this.clearDate = function () {
