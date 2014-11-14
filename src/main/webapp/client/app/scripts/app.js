@@ -24,46 +24,46 @@ angular
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
+                templateUrl: 'client/app/views/main.html',
                 controller: 'MainCtrl'
             })
             .when('/cartList', {
-                templateUrl: 'views/cartList.html',
+                templateUrl: 'client/app/views/cartList.html',
                 controller: 'CartListCtrl'
             })
             .when('/shop', {
-                templateUrl: 'views/shop.html',
+                templateUrl: 'client/app/views/shop.html',
                 controller: 'ShopCtrl'
             })
             .when('/payList', {
-                templateUrl: 'views/payList.html',
+                templateUrl: 'client/app/views/payList.html',
                 controller: 'PayListCtrl'
             })
             .when('/categoryManage', {
-                templateUrl: 'views/categoryManage.html',
+                templateUrl: 'client/app/views/categoryManage.html',
                 controller: 'CategoryCtrl'
             })
             .when('/categoryAdd', {
-                templateUrl: 'views/categoryAdd.html',
+                templateUrl: 'client/app/views/categoryAdd.html',
                 controller: 'CategoryAddCtrl'
             })
             .when('/categoryUpdate', {
-                templateUrl: 'views/categoryUpdate.html',
+                templateUrl: 'client/app/views/categoryUpdate.html',
                 controller: 'CategoryUpdateCtrl'
             })
             .when('/goodsManage', {
-                templateUrl: 'views/goodsManage.html',
+                templateUrl: 'client/app/views/goodsManage.html',
                 controller: 'GoodsCtrl'
             })
             .when('/goodsAdd', {
-                templateUrl: 'views/goodsAdd.html',
+                templateUrl: 'client/app/views/goodsAdd.html',
                 controller: 'GoodsAddCtrl'
             })
             .when('/goodsUpdate', {
-                templateUrl: 'views/goodsUpdate.html',
+                templateUrl: 'client/app/views/goodsUpdate.html',
                 controller: 'GoodsUpdateCtrl'
             })
             .otherwise({
-                redirectTo: '/'
+                redirectTo: 'client/app/'
             });
     });
