@@ -69,6 +69,7 @@ public class CartItemDaoImpl implements CartItemDao{
 
     @Override
     public void deleteCartItems() {
-
+        String sql = "DELETE FROM cartItems";
+        jdbcTemplate.update(sql);
     }
 }
