@@ -27,7 +27,7 @@ angular.module('letusgoApp').service('CategoryService', function (localStorageSe
                 return false;
             }else{
                 var newCategory = currentThis.generateCategory(null, currentName, 0);
-                $http.post('http://localhost:8080/api/categories/', {'category': newCategory});
+                $http.post('http://localhost:8080/api/categories', {'category': newCategory});
                 callback([false, false]);
                 return true;
             }

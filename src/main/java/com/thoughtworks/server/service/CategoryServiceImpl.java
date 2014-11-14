@@ -31,7 +31,6 @@ public class CategoryServiceImpl implements CategoryService{
     public Category getCategoryById(int id) {
         List<Item> item= itemDaoImpl.getItemsByCategoryId(id);
         Category category = categoryDaoImpl.getCategoryById(id);
-        System.out.println(new Category(category.getId(), category.getName(), item.size()));
         return new Category(category.getId(), category.getName(), item.size());
     }
 
