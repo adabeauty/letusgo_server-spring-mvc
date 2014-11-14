@@ -25,9 +25,12 @@ angular.module('letusgoApp')
         };
 
         $scope.deleteItem = function (cartItem) {
-            BoughtGoodsService.deleteItem(cartItem);
-            $scope.$emit('to-parent-changeClickCount', 0, cartItem.num);
-            refresh();
+            console.log(cartItem);
+            BoughtGoodsService.deleteItem(cartItem, function(){
+                $scope.$emit('to-parent-changeClickCount', 0, cartItem.num);
+                refresh();
+            });
+
         };
 
     });
