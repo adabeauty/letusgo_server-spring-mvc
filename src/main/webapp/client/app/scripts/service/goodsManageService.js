@@ -37,7 +37,7 @@ angular.module('letusgoApp').service('GoodService', function (localStorageServic
             var index = _.findIndex(categories, {name: itemCategory.name});
             categories[index].num = categories[index].num + num;
             $http.put('http://localhost:8080/api/categories/' + categories[index].id, {id: categories[index].id,
-                name: categories[index].name, num: categories[index].num}).success();
+                name: categories[index].name, num: categories[index].num});
         });
     };
 
@@ -82,11 +82,11 @@ angular.module('letusgoApp').service('GoodService', function (localStorageServic
 
     this.updateItem = function (updateObject) {
         $http.put('http://localhost:8080/api/items/' + updateObject.id, {id: updateObject.id, name: updateObject.name,
-        price: updateObject.price, unit: updateObject.unit, category: updateObject.category});
+            price: updateObject.price, unit: updateObject.unit, category: updateObject.category});
     };
 
     this.deleteButton = function (item) {
-        $http.delete('http://localhost:8080/api/items/' + item.id).success(function(){});
+        $http.delete('http://localhost:8080/api/items/' + item.id);
         this.modifyCategoryNum(-1, item.category);
     };
 
