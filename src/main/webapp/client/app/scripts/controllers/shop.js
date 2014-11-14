@@ -6,7 +6,7 @@ angular.module('letusgoApp')
         $scope.$emit('to-parent-navigator-inshop');
         $scope.$emit('to-parent-changeClickCount', 1, 0);
 
-        $http.get('/api/goods').success(function(goods){
+        $http.get('http://localhost:8080/api/items').success(function(goods){
             $scope.allItems = goods;
         });
 

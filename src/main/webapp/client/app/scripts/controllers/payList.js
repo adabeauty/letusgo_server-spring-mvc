@@ -3,7 +3,7 @@
 angular.module('letusgoApp')
     .controller('PayListCtrl', function ($scope, BoughtGoodsService, localStorageService, $http) {
 
-        $http.get('/api/cart').success(function(data){
+        $http.get('http://localhost:8080/api/cartItems').success(function(data){
             $scope.boughtGoods = data;
             $scope.boughtGoodsLength = data.length;
             $scope.totalMoney = BoughtGoodsService.getTotalMoney(data);;

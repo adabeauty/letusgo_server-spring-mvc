@@ -16,7 +16,7 @@ angular.module('letusgoApp').service('CategoryService', function (localStorageSe
 
     this.saveNewCategory = function (currentName, callback) {
         var currentThis = this;
-        $http.get('/api/categories').success(function(categories){
+        $http.get('http://localhost:8080/api/categories').success(function(categories){
             var nameHadExist = currentThis.nameHadExist(categories, currentName);
             if (!currentName) {
                 callback([true, false]);
@@ -27,7 +27,7 @@ angular.module('letusgoApp').service('CategoryService', function (localStorageSe
                 return false;
             }else{
                 var newCategory = currentThis.generateCategory(null, currentName, 0);
-                $http.post('/api/categories', {'category': newCategory});
+                $http.post('http://localhost:8080/api/categories/', {'category': newCategory});
                 callback([false, false]);
                 return true;
             }
@@ -36,7 +36,7 @@ angular.module('letusgoApp').service('CategoryService', function (localStorageSe
 
     this.updateCategory = function (callback) {
         var updateObeject = localStorageService.get('updateCategory');
-        $http.put('/api/categories/' + updateObeject.ID, {'category': updateObeject}).success(function(){});
+        $http.put('http://localhost:8080/api/categories/' + updateObeject.id, {'category': updateObeject}).success(function(){});
         callback();
     };
 
@@ -45,7 +45,7 @@ angular.module('letusgoApp').service('CategoryService', function (localStorageSe
         if (object.num != 0) {
             return false;
         } else {
-            $http.delete('/api/categories/' + object.ID).success(function(){});
+            $http.delete('http://localhost:8080/api/categories/' + object.id).success(function(){});
             return true;
         }
     };

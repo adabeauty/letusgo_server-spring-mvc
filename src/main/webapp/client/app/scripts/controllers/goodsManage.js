@@ -4,7 +4,7 @@ angular.module('letusgoApp')
     .controller('GoodsCtrl', function ($scope, $location, localStorageService, GoodService, $http) {
 
         function getGoods(){
-            $http.get('/api/goods').success(function(data){
+            $http.get('http://localhost:8080/api/items').success(function(data){
                 $scope.allGoods = data;
             });
         }

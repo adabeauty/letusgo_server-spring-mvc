@@ -15,7 +15,7 @@ angular.module('letusgoApp')
                 var canSkip = warning[0] === false && warning[1] ===false;
                 if(canSkip){
                     $location.path('/goodsManage');
-                    $http.get('/api/goods').success(function(goods){
+                    $http.get('http://localhost:8080/api/items').success(function(goods){
                         $scope.allItems = goods;
                     });
                 }

@@ -3,8 +3,8 @@
 angular.module('letusgoApp')
     .controller('CategoryCtrl', function ($scope, CategoryService, localStorageService, $http) {
 
-        function getCtegories(){
-            $http.get('/api/categories').success(function(data){
+        function getCategories(){
+            $http.get('http://localhost:8080/api/categories').success(function(data){
                 $scope.category = data;
             });
         }
@@ -24,6 +24,6 @@ angular.module('letusgoApp')
                 $scope.cannotDeleteError = true;
             }
 
-            getCtegories();
+            getCategories();
         };
     });
