@@ -4,7 +4,7 @@ angular.module('letusgoApp').service('GoodService', function (localStorageServic
     this.item = function (category, name, price, unit) {
 
         return {
-            Id: null,
+            id: null,
             name: name,
             price: price,
             unit: unit,
@@ -22,14 +22,14 @@ angular.module('letusgoApp').service('GoodService', function (localStorageServic
     this.saveItem = function (itemCategory, itemName, itemPrice, itemUnit) {
 
         var newItem = this.item(itemCategory, itemName, JSON.parse(itemPrice).toFixed(2), itemUnit);
-        $http.post('http://localhost:8080/api/items/', {'item': newItem});
+        $http.post('http://localhost:8080/api/items', {'item': newItem});
     };
     this.modifyCategoryNum = function (num, itemCategory) {
 
-        $http.get('ttp://localhost:8080/api/categories').success(function(categories){
+        $http.get('http://localhost:8080/api/categories').success(function(categories){
             var index = _.findIndex(categories, {name: itemCategory});
             categories[index].num = JSON.parse(categories[index].num) + num;
-            $http.put('ttp://localhost:8080/api/categories/' + categories[index].id, {'category': categories[index]}).success(function(){});
+            $http.put('http://localhost:8080/api/categories/' + categories[index].id, {'category': categories[index]}).success(function(){});
         });
     };
 
@@ -73,11 +73,11 @@ angular.module('letusgoApp').service('GoodService', function (localStorageServic
     };
 
     this.updateItem = function (updateObject) {
-        $http.put('http://localhost:8080/api/items/' + updateObject.Id, {'item': updateObject});
+        $http.put('http://localhost:8080/api/items/' + updateObject.id, {'item': updateObject});
     };
 
     this.deleteButton = function (item) {
-        $http.delete('http://localhost:8080/api/items/' + item.Id);
+        $http.delete('http://localhost:8080/api/items/' + item.id);
         this.modifyCategoryNum(-1, item.category);
     };
 
