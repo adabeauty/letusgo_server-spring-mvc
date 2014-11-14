@@ -42,8 +42,8 @@ insert into items values(null, '方便面', 4.0, '袋', 3);
 insert into items values(null, '电池', 2.0, '个', 4);
 insert into items values(null, '苹果', 3.5, '斤', 2);
 
-insert into cartItems values(null, 1, 5);
-insert into cartItems values(null, 2, 3);
-insert into cartItems values(null, 6, 3);
-insert into cartItems values(null, 4, 2);
+-- insert into cartItems values(null, 1, 5);
+-- insert into cartItems values(null, 2, 3);
+-- insert into cartItems values(null, 6, 3);
+-- insert into cartItems values(null, 4, 2);
 COMMIT;
