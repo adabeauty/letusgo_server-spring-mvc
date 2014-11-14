@@ -5,9 +5,9 @@
 
 	<display-name>Spring MVC Application</display-name>
 
-    <!--<welcome-file-list>-->
-        <!--<welcome-file>client/app/index.html</welcome-file>-->
-    <!--</welcome-file-list>-->
+    <welcome-file-list>
+        <welcome-file>client/app/index.html</welcome-file>
+    </welcome-file-list>
 
     <servlet>
 		<servlet-name>mvc-dispatcher</servlet-name>
